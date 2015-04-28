@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gamon JS</title>
+	<link href="css/style.css" rel="stylesheet"/>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/gamon-1.0.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+
+<header>
+	<div class="wrapper">
+		<div id="brand"></div>
+
+		<div id="nav"></div>
+		<script type="text/html" id="nav-tpl">
+			{{# header #}}
+			{{ if navigations|length > 0 }}
+			<ul class="nav">
+				{{ navigations }}
+				<li><a href="{{ url }}" title="{{ title }}">{{ title }}</a></li>
+				{{ /navigations }}
+			</ul>
+			{{ endif }}
+		</script>
+	</div>
+</header>
+
+<section id="content">
+	<div class="wrapper">
+		<div id="projects"></div>
+	</div>
+</section>
+
+<footer id="footer">
+	<div class="wrapper">
+		<p>GamonJS made with Love</p>
+	</div>
+</footer>
+
+</body>
+</html>

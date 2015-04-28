@@ -1,0 +1,43 @@
+<h2>Projects</h2>
+
+{{ if projects|length > 0 }}
+
+    {{ projects }}
+    <h3><strong>Name: </strong>{{ name }}</h3>
+    <ul>
+        <li><strong>Start Date: </strong>{{ startdate|dateFormat }}</li>
+        <li><strong>End Date: </strong>{{ enddate|dateFormat }}</li>
+        <li><strong>Total Sprint: </strong>{{ totalsprint }}</li>
+        {{ if team|length > 0 }}
+        <li><strong>Teams: </strong>
+            <ul>
+                {{ team }}
+                    <li><strong>Name:</strong> {{ name }}, <strong>Skills:</strong> {{ skills|join(", ") }}</li>
+                {{ /team }}
+            </ul>
+        </li>
+        {{ else }}
+        <li><strong>Teams: </strong> -</li>
+        {{ endif }}
+        {{ if task|length > 0 }}
+        <li><strong>Task:</strong>
+            {{ task }}
+            <ul>
+                <li><strong>Title:</strong> {{ title }}</li>
+                <li><strong>Start Date:</strong> {{ startdate|dateFormat }}</li>
+                <li><strong>End Date::</strong> {{ enddate|dateFormat }}</li>
+                {{ if assignees|length > 0 }}
+                <ul>
+                    {{ assignees }}
+                    <li>Assignees: {{ [] }}</li>
+                    {{ /assignees }}
+                </ul>
+                {{ endif }}
+            </ul>
+            {{ /task }}
+        </li>
+        {{ endif }}
+    </ul>
+    {{ /projects }}
+
+{{ endif }}
