@@ -128,7 +128,7 @@ var obj = {
 var tmpl = document.getElementById("my-tmpl");
 var container = document.getElementById("container");
 var html = gamon.parse(tmpl, obj);
-container.innerHtml = html;
+container.innerHTML = html;
 ```
 
 ### External Template
@@ -176,7 +176,7 @@ var obj = {
     ]
 }
 {{ skills|index(0) }}
-{{ skills|index(0, "name") }}
+{{ childrens|index(0, "name") }}
 
 // length
 {{ skills|length }}
