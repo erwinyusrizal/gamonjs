@@ -6,13 +6,13 @@ GamonJS is another Javascript Template Engine
 for demo you can check in the demo folder
 
 ## Custom Scope Glue
-By default gamon will use dot (.) as a scope glue
+By default gamon will use dot (.) as the scope glue
 ```
 //custom scope glue
 gamon.scopeGlue("::");
 ```
 
-## Comment
+## Comments
 You can add comments to your templates by wrapping the text in {{# #}}.
 ```
 {{# this text will not gonna rendered #}}
@@ -226,4 +226,5 @@ License
 MIT - 
 Free to use, Free to Edit, Do whatever you want with the code
 
+### Author
 [Erwin yusrizal](http://erwinyusrizal.me)
