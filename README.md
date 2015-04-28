@@ -211,9 +211,9 @@ gamon.filter.register({
     }
 });
 ```
-You can create your filter arguments as many as you want separated by "", but for the last argument should be the filter test value.
+You can create your filter arguments as many as you want separated by comma(,), but for the last argument should be the filter test value.
 ```
-gamon.register("sample_filter", function(arg1, arg2, arg3, arg4, value){
+gamon.filter.register("sample_filter", function(arg1, arg2, arg3, arg4, value){
     //logic here
 });
 
