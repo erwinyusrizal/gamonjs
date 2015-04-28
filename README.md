@@ -148,7 +148,7 @@ var html = gamon.loadTemplate({
 ```
 
 ## Filter
-Gamon filter is a function that you can use to filter a variable/array/object in your variable tags, loop tags or conditional tags separated by pipe (|) char. By default gamon provide filters: safe, index and length only but you can create your own custom filter
+Gamon filter is a function that you can use to filter a variable/array/object in your variable tags and conditional tags separated by pipe (|) char. By default gamon provide filters: safe, index and length only but you can create your own custom filter
 
 * |safe ==> return escaped characters &, <, >, ", '
 * |index ==> return array index value, ex: array|index(keys,properties)
