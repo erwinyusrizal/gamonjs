@@ -164,7 +164,19 @@ var obj = {
 {{ hello|safe }}
 
 //index
+{
+    "skills" : ["HTML", "Javascript", "CSS"],
+    "childrens": [
+        {
+            "name": "John"
+        },
+        {
+            "name": "Doe"
+        }
+    ]
+}
 {{ skills|index(0) }}
+{{ skills|index(0, "name") }}
 
 // length
 {{ skills|length }}
