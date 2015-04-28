@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>GamonJS by erwinyusrizal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">GamonJS</h1>
+      <h2 class="project-tagline">Simple Javascript Templating Engine</h2>
+      <a href="https://github.com/erwinyusrizal/gamonjs" class="btn">View on GitHub</a>
+      <a href="https://github.com/erwinyusrizal/gamonjs/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/erwinyusrizal/gamonjs/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="gamonjs" class="anchor" href="#gamonjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>GamonJS</h1>
+
+<p>GamonJS is another Javascript Template Engine</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>for demo you can check in the demo folder</p>
+
+<h2>
+<a id="custom-scope-glue" class="anchor" href="#custom-scope-glue" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Scope Glue</h2>
+
+<p>By default gamon will use dot (.) as a scope glue</p>
+
+<pre><code>//custom scope glue
+gamon.scopeGlue("::");
+</code></pre>
+
+<h2>
+<a id="comments" class="anchor" href="#comments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comments</h2>
+
+<p>You can add comments to your templates by wrapping the text in {{# #}}.</p>
+
+<pre><code>{{# this text will not gonna rendered #}}
+{{#
+    They can be multi-line too.
+#}}
+</code></pre>
+
+<h2>
+<a id="prevent-parsing" class="anchor" href="#prevent-parsing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prevent Parsing</h2>
+
+<p>If you would like to use a text contains gamon tag for example {{ your text }} inside your template, you can use gamon noparse tag. For example:</p>
+
+<pre><code>{{ noparse }}
+    {{ this text wont be parsed }}
+    {{ if array|length &gt; 0 }}
+    {{ objects }}
+{{ /noparse }}
+</code></pre>
+
+<h2>
+<a id="conditionals-tags" class="anchor" href="#conditionals-tags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conditionals Tags</h2>
+
+<p>Conditionals in gamon are simple and easy to use. It allows for the standard if, elseif, and else.</p>
+
+<p>All if blocks must be closed with either a {{ /if }} or {{ endif }} tag.</p>
+
+<p>A Conditional can contain any Comparison Operators you would do in JS (==, !=, ===, !==, &gt;, &lt;, &lt;=, &gt;=). You can also use any of the Logical Operators (||, &amp;&amp;, and, or).</p>
+
+<pre><code>{{ if object.properties }}
+    {{ properties }}
+{{ endif }}
+
+{{ if variable == "some text" }}
+    &lt;p&gt;Will render: {{ variable }}&lt;/p&gt;
+{{ elseif variable == "another text" }}
+    &lt;p&gt;Will render another text {{ variable }}&lt;/p&gt;
+{{ else }}
+    &lt;p&gt;Maybe this is not a text&lt;/p&gt;
+{{ endif }}
+</code></pre>
+
+<h2>
+<a id="variable-tags" class="anchor" href="#variable-tags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Variable Tags</h2>
+
+<p>When dealing with variables, you can: access single variables, access deeply nested variables inside arrays/objects, and loop over an array. You can even loop over nested arrays.</p>
+
+<h3>
+<a id="simple-variable" class="anchor" href="#simple-variable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Variable</h3>
+
+<pre><code>var data = {
+    "title": "Mr.",
+    "name": {
+        "first_name": "John",
+        "last_name": "Doe"
+    },
+    "childrens": [
+        {
+            "name": "Jhonny",
+            "age": "25",
+            "birthday": "1990-05-20"
+        },
+        {
+            "name": "Merry",
+            "age": "20",
+            "birthday": "1995-02-10"
+        }
+    ],
+    "asets": ["Cars", "House", "Bike", "Gold"]
+};
+</code></pre>
+
+<h3>
+<a id="basic-example" class="anchor" href="#basic-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Example</h3>
+
+<pre><code>Hello {{ title }}
+Hello {{ title }} {{ name.first_name }}
+</code></pre>
+
+<h3>
+<a id="variable-loop" class="anchor" href="#variable-loop" aria-hidden="true"><span class="octicon octicon-link"></span></a>Variable Loop</h3>
+
+<p>Varible Loop is a block tag contain variable name. Each loop variable tag must have its closing tag</p>
+
+<pre><code>//Loop an object
+{{ childrens }}
+    {{ name }}
+    {{ age }}
+    {{ birtday }}
+{{ /childrens }}
+
+//Loop an array
+{{ assets }}
+    {{ [] }}
+{{ /assets }}
+</code></pre>
+
+<h2>
+<a id="parse" class="anchor" href="#parse" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parse</h2>
+
+<h3>
+<a id="simple-parse" class="anchor" href="#simple-parse" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Parse</h3>
+
+<pre><code>var obj = {
+    "name":{
+        "first_name": "John",
+        "last_name": "Doe"
+    }
+};
+var text = '&lt;p&gt;First Name: {{ name.first_name }}, Last Name: {{ name.last_name }}&lt;/p&gt;';
+var html = gamon.parse(text, obj);
+</code></pre>
+
+<h3>
+<a id="include-template" class="anchor" href="#include-template" aria-hidden="true"><span class="octicon octicon-link"></span></a>Include Template</h3>
+
+<pre><code>&lt;script type="text/html" id="my-tmpl"&gt;
+    &lt;p&gt;First Name: {{ name.first_name }}, Last Name: {{ name.last_name }}&lt;/p&gt;
+&lt;/script&gt;
+&lt;div id="container"&gt;&lt;/div&gt;
+
+var obj = {
+    "name":{
+        "first_name": "John",
+        "last_name": "Doe"
+    }
+};
+var tmpl = document.getElementById("my-tmpl");
+var container = document.getElementById("container");
+var html = gamon.parse(tmpl, obj);
+container.innerHtml = html;
+</code></pre>
+
+<h3>
+<a id="external-template" class="anchor" href="#external-template" aria-hidden="true"><span class="octicon octicon-link"></span></a>External Template</h3>
+
+<p>You can load an external template using gamon loadTemplate method</p>
+
+<pre><code>//NON-AJAX
+var html = gamon.loadTemplate("path/to/template");
+gamon.parse(html);
+
+//AJAX
+var html = gamon.loadTemplate({
+    url: "partials/index.html",
+    onComplete: function(response){
+        //do parsing here
+    }
+}, true);
+</code></pre>
+
+<h2>
+<a id="filter" class="anchor" href="#filter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filter</h2>
+
+<p>Gamon filter is a function that you can use to filter a variable/array/object in your variable tags and conditional tags separated by pipe (|) char. By default gamon provide filters: safe, index and length only but you can create your own custom filter</p>
+
+<ul>
+<li>|safe ==&gt; return escaped characters &amp;, &lt;, &gt;, ", '</li>
+<li>|index ==&gt; return array index value, ex: array|index(keys,properties)</li>
+<li>|length ==&gt; return string, array, object length</li>
+</ul>
+
+<pre><code>var obj = {
+    "hello": "&lt;script&gt;alert('hello');&lt;/script&gt;",
+    "skills": ["HTML", "Javascript", "CSS"];
+};
+
+//safe
+{{ hello|safe }}
+
+//index
+{
+    "skills" : ["HTML", "Javascript", "CSS"],
+    "childrens": [
+        {
+            "name": "John"
+        },
+        {
+            "name": "Doe"
+        }
+    ]
+}
+{{ skills|index(0) }}
+{{ skills|index(0, "name") }}
+
+// length
+{{ skills|length }}
+
+//conditional contain filter
+{{ if skills|length &gt; 0 }}
+</code></pre>
+
+<h3>
+<a id="custom-filter" class="anchor" href="#custom-filter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Filter</h3>
+
+<p>If you need a custom callback that you can use in your filter, you can create your custom filter</p>
+
+<pre><code>//Register Single Filter
+gamon.filter.register("join", function(separator, value){
+    if(!gamon.isArray(value)) throw new Error("Value not an array");
+    return value.join(separator);
+});
+
+//Register multiple filters
+gamon.filter.register({
+    "join":function(separator, value){
+        if(!gamon.isArray(value)) throw new Error("Value not an array");
+        return value.join(separator);
+    },
+    "length": function(value){
+        if(value === "undefined") return;
+        if(gamon.isObject(value)){
+            return Object.keys(value).length;
+        }else{
+            return value.length;
+        }
+    }
+});
+</code></pre>
+
+<p>You can create your filter arguments as many as you want separated by "", but for the last argument should be the filter test value.</p>
+
+<pre><code>gamon.register("sample_filter", function(arg1, arg2, arg3, arg4, value){
+    //logic here
+});
+
+//template usage
+{{ variable|sample_filter("arg1","arg2","arg3","arg4") }}
+</code></pre>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT - 
+Free to use, Free to Edit, Do whatever you want with the code</p>
+
+<p>Author <a href="http://erwinyusrizal.me">Erwin yusrizal</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/erwinyusrizal/gamonjs">GamonJS</a> is maintained by <a href="https://github.com/erwinyusrizal">erwinyusrizal</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
