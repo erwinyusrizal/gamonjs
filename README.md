@@ -1,6 +1,6 @@
 # GamonJS
 
-GamonJS is another Javascript Template Parser
+GamonJS is another Javascript Template Engine
 
 ## Usage
 for demo you can check in the demo folder
